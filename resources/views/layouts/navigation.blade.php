@@ -18,7 +18,17 @@
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('jeux.index')" :active="request()->routeIs('jeux.index')">
-                        {{ __('Jeux') }}
+                        {{ __('Games') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('categorie.index')" :active="request()->routeIs('categorie.index')">
+                        {{ __('Categories') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('tag.index')" :active="request()->routeIs('tag.index')">
+                        {{ __('Tags') }}
                     </x-nav-link>
                 </div>
             </div>

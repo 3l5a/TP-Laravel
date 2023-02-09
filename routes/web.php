@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\JeuController;
+use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,18 +27,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('jeux', JeuController::class);
-
-// Route::get('/categories', function () {
-//     JeuController::class;
-//     return view('categories');
-//     [JeuController::class, 'index'];
-// })->middleware(['auth', 'verified'])->name('categories');
-
-// Route::get('/tags', function () {
-//     JeuController::class;
-//     return view('tags');
-//     [JeuController::class, 'index'];
-// })->middleware(['auth', 'verified'])->name('tags');
+Route::resource('categorie', CategorieController::class);
+Route::resource('tag', TagController::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

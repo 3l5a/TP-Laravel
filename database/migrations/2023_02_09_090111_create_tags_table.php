@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('tag', function (Blueprint $table) {
             $table->id();
-            $table->string('nom_tag');
+            $table->string('nom_tag')->unique();
         });
     }
 

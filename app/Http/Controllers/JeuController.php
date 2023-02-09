@@ -65,7 +65,8 @@ class JeuController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('jeux.edit');
+
     }
 
     /**
@@ -88,10 +89,6 @@ class JeuController extends Controller
      */
     public function destroy($id)
     {
-        $jeux = Jeu::find($id);
-        return view('jeux.delete', [
-            'id_jeu' => $id, 
-            'jeu'=>$jeux
-        ]);
+        //
     }
 }

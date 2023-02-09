@@ -1,8 +1,14 @@
 {
     "List of games" : "Tous les jeux",
     "Game details" : "Détails du jeu",
+    "Category details": "Détails catégorie",
+    "Tag details": "Détails tag",
     "Dashboard": "Tableau de bord",
     "You're logged in!": "Vous êtes connecté-e !",
     "Log Out":"Se déconnecter",
-    "Profile": "Profil"
+    "Profile": "Profil",
+    "Categories": "Catégories",
+    "List of categories": "Liste des catégories",
+    "List of tags": "Liste des tags",
+    "Games": "Jeux"
 }
