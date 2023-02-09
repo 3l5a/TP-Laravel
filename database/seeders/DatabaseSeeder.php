@@ -1,8 +1,9 @@
 <?php
 namespace Database\Seeders;
+
+use App\Models\Categorie;
 use App\Models\Jeu;
-
-
+use App\Models\Tag;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -22,5 +23,7 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        Categorie::factory(10)->create();
+        Tag::factory(50)->create();
     }
 }
