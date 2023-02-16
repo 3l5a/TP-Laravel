@@ -15,7 +15,7 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = Tag::all();
+        $tags = Tag::orderBy('id')->get();
         return view('tag.index', ['tags' => $tags]);
     }
 
@@ -48,10 +48,9 @@ class TagController extends Controller
      */
     public function show($id)
     {
-        $tags = Tag::find($id);
+        $tag = Tag::find($id);
         return view('tag.show', [
-            'id_tag' => $id,
-            'tag' => $tags
+            'tag' => $tag
         ]);
     }
 
@@ -63,7 +62,10 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        return view('tag.edit');
+        $tag = Tag::find($id);
+        return view('tag.edit', [
+            'tag' => $tag
+        ]);
     }
 
     /**
@@ -75,7 +77,17 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if($request->validate([
+            'titre'=>'required | string | max:45' // validateur de query pour éviter les injections utilisateur = obligatoire, varchar, longueur 45 //
+        ])) {
+        $titre = $request->input('titre'); // enregistre le texte entré comme titre
+        $tag = Tag::find($id);
+        $tag->nom_tag = $titre; //recup le nouveau titre
+        $tag->save();
+        return redirect()->route('tag.index');
+        } else {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -86,6 +98,7 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Tag::destroy($id);
+        return redirect()->route('tag.index');
     }
 }

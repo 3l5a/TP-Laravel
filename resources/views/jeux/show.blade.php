@@ -15,15 +15,14 @@
                     <div class="
                                 overflow-hidden 
                                 shadow-sm 
-                                rounded-lg 
-                                bg-indigo-500 
-                                hover:bg-cyan-600/50">
+                                rounded-lg ">
                         <div class="
                                     p-5 
                                     text-white 
                                     text-center 
                                     md:text-left">
                             id = {{$jeu->id}}</div>
+                            <p class="bg-green-200 text-sm w-fit p-1.5 mt-3 text-black rounded-md"> {{$categorie->libelle}}</p>
                     </div>
                 </div>
             </div>

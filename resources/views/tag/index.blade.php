@@ -25,7 +25,8 @@
 
                                 <a href="{{ route('tag.edit', $tag->id) }}"><x-update-btn>Modifier</x-update-btn></a>
                                 <a href="{{ route('tag.show', $tag->id) }}"><x-read-btn>Voir</x-read-btn></a>
-                                <a href="#"><x-supprimer>Supprimer</x-supprimer></a>
+                                <x-supprimer action="{{ route('tag.destroy', $tag->id) }}"></x-supprimer>
+
                             </td>
                         </tr>
 

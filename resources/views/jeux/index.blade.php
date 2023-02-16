@@ -25,7 +25,7 @@
 
                                 <a href="{{ route('jeux.edit', $jeu->id) }}"><x-update-btn>Modifier</x-update-btn></a>
                                 <a href="{{ route('jeux.show', $jeu->id) }}"><x-read-btn>Voir</x-read-btn></a>
-                                <a href="#"><x-supprimer>Supprimer</x-supprimer></a>
+                                <x-supprimer action="{{ route('jeux.destroy', $jeu->id) }}"></x-supprimer>
                             </td>
                         </tr>
 

@@ -16,14 +16,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Jeu::factory(10)->create();
         // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        \App\Models\User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+        ]);
         Categorie::factory(10)->create();
         Tag::factory(50)->create();
+        Jeu::factory(10)->create();
+        $jeux = Jeu::all();
+        foreach($jeux as $jeu) { //va ajouter dans la table pivot grâce au modèle
+            $jeu->tags()->attach(1); //attach pr ajouter, detach pour enlever
+        }
+
     }
 }

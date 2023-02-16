@@ -25,7 +25,7 @@
 
                                 <a href="{{ route('categorie.edit', $categorie->id) }}"><x-update-btn>Modifier</x-update-btn></a>
                                 <a href="{{ route('categorie.show', $categorie->id) }}"><x-read-btn>Voir</x-read-btn></a>
-                                <a href="#"><x-supprimer>Supprimer</x-supprimer></a>
+                                <x-supprimer :action=" route('categorie.destroy', $categorie->id) "></x-supprimer>
                             </td>
                         </tr>
 

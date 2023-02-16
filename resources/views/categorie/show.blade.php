@@ -22,6 +22,11 @@
                                     text-center 
                                     md:text-left">
                             id = {{$categorie->id}}</div>
+                            <ul class="text-gray-400"> Liste de tous les jeux de cette catégorie :
+                            @foreach($jeux as $jeu) 
+                                <li class="text-white">{{$jeu->titre}}</li>
+                            @endforeach
+                            </ul>
                     </div>
                 </div>
             </div>

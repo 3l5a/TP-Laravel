@@ -15,8 +15,8 @@ class CategorieController extends Controller
      */
     public function index()
     {
-        $categories = Categorie::all();
-        return view('categorie.index', ['categories'=>$categories]);
+        $categories = Categorie::orderBy('id')->get();
+        return view('categorie.index', compact('categories'));
     }
 
     /**
@@ -37,7 +37,12 @@ class CategorieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->validate([
+            'libelle'=>'required | string | max:45'
+        ])) {
+            $libelle = $request->input('libelle');
+            dd($libelle);
+        }
     }
 
     /**
@@ -48,10 +53,12 @@ class CategorieController extends Controller
      */
     public function show($id)
     {
-        $categories = Categorie::find($id);
-        return view('categorie.show', [
-            'id_categorie' => $id, 
-            'categorie'=>$categories
+        $categorie = Categorie::find($id);
+        $jeux = $categorie->jeux; //jeux = la fct jeux() de categorie.php
+
+        return view('categorie.show', [ // ou tableau assoc sous forme de : compact('categorie', 'jeux')
+            'categorie'=>$categorie,
+            'jeux'=> $jeux
         ]);
     }
 
@@ -63,7 +70,10 @@ class CategorieController extends Controller
      */
     public function edit($id)
     {
-        return view('categorie.edit');
+        $categorie = Categorie::find($id);
+        return view('categorie.edit', [
+            'categorie' => $categorie
+        ]);
     }
 
     /**
@@ -75,7 +85,17 @@ class CategorieController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if($request->validate([
+            'titre'=>'required | string | max:45' // validateur de query pour éviter les injections utilisateur = obligatoire, varchar, longueur 45 //
+        ])) {
+        $titre = $request->input('titre'); // enregistre le texte entré comme titre
+        $categorie = Categorie::find($id);
+        $categorie->libelle = $titre; //recup le nouveau titre
+        $categorie->save();
+        return redirect()->route('categorie.index');
+        } else {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -86,6 +106,7 @@ class CategorieController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Categorie::destroy($id);
+        return redirect()->route('categorie.index');
     }
 }
